@@ -4,7 +4,7 @@ class main {
 
     private static String readNumber(String s, int i) {
         StringBuilder sb = new StringBuilder();
-        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+        while (i < s.length() && (Character.isDigit(s.charAt(i)) || s.charAt(i) == '.')) {
             sb.append(s.charAt(i));
             i++;
         }
@@ -165,7 +165,7 @@ class main {
     }
 
     public static void main(String args[]) {
-        System.out.println("90165: " + calculate_rpn(toRpn("27+38+81+48*33*53+91*53+82*14+96")));
+        System.out.println("90165: " + calculate_rpn(toRpn("27+38+81.9+48*33*53+91*53+82*14+96")));
         System.out.println("616222: " + calculate_rpn(toRpn("22*26*53+66*8+7*76*25*44+78+100")));
         System.out.println(calculate_rpn(toRpn("(22+4)*4")));
     }
