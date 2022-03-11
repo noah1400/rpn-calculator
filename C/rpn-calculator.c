@@ -179,6 +179,7 @@ char *get_value_of_expression(char *b, char *a, char operator)
     {
         type_of_b = 1;
     }
+    
     switch (type_of_b)
     {
     case 0:
@@ -188,9 +189,33 @@ char *get_value_of_expression(char *b, char *a, char operator)
             switch (operator)
             {
                 case '+':
-                    int result = atoi(a) + atoi(b);
-                    char *s;
-                    return (char*)malloc(sizeof(char)*(strlen(itoa(result,s,10))+1));
+                    int result = atoi(b) + atoi(a);
+                    char *s = (char*)malloc(sizeof(char)*11);
+                    char * ret = (char*)malloc(sizeof(char)*(strlen(itoa(result,s,10))+1));
+                    strcpy(ret, itoa(result,s,10));
+                    free(s);
+                    return ret;
+                case '-':
+                    int result = atoi(b) - atoi(a);
+                    s = (char*)malloc(sizeof(char)*11);
+                    ret = (char*)malloc(sizeof(char)*(strlen(itoa(result,s,10))+1));
+                    strcpy(ret, itoa(result,s,10));
+                    free(s);
+                    return ret;
+                case '*':
+                    int result = atoi(b) * atoi(a);
+                    s = (char*)malloc(sizeof(char)*11);
+                    ret = (char*)malloc(sizeof(char)*(strlen(itoa(result,s,10))+1));
+                    strcpy(ret, itoa(result,s,10));
+                    free(s);
+                    return ret;
+                case '/':
+                    result = atoi(b) / atoi(a);
+                    s = (char*)malloc(sizeof(char)*11);
+                    ret = (char*)malloc(sizeof(char)*(strlen(itoa(result,s,10))+1));
+                    strcpy(ret, itoa(result,s,10));
+                    free(s);
+                    return ret;
             }
             break;
         case 1:
