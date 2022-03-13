@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define get_variable_name(x) (#x)
-
 typedef struct elem
 {
     struct elem* next;
