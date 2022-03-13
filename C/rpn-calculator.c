@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 typedef struct elem
 {
@@ -10,7 +11,12 @@ typedef struct elem
 
 int is_operator(char element)
 {
-    if (element == '+' || element == '-' || element == '*' || element == '/' || element == '%')
+    if (element == '+' 
+        || element == '-' 
+        || element == '*' 
+        || element == '/' 
+        || element == '%'
+        || element == '^')
         return 1;
     else
         return 0;
@@ -106,6 +112,8 @@ char get_precedence(char element)
         return 1;
     else if (element == '*' || element == '/' || element == '%')
         return 2;
+    else if (element == '^')
+        return 3;
     else
         return 0;
 }
@@ -192,6 +200,9 @@ char *get_value_of_expression(char *b, char *a, char operator)
         case '%':
             sprintf(buffer, "%d", (int)b_value % (int)a_value);
             break;
+        case '^':
+            sprintf(buffer, "%f", pow(b_value, a_value));
+            break;
     }
     char *result = (char*)malloc(sizeof(char)*(strlen(buffer)+1));
     strcpy(result, buffer);
@@ -223,9 +234,7 @@ char *calculate_rpn(ELEMENT *rpn){
 
 int main(int argc, char *argv[])
 {
-    
-    
-    char *expression = "4/23-3.5";
+    char *expression = "4/23-3.5^4";
     ELEMENT *rpn = to_rpn(expression);
     char *result = calculate_rpn(rpn);
     printf("%s\n", result);
