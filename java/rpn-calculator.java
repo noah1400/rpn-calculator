@@ -75,75 +75,18 @@ class main {
     }
 
     private static String getValueOfExpression(String b, String a, char operator){
-        String typeOfA = "int";
-        String typeOfB = "int";
-        if ( a.contains(".") ){
-            typeOfA = "double";
-        }
-        if ( b.contains(".") ){
-            typeOfB = "double";
-        }
-        switch( typeOfA ){
-            case "int":
-                switch ( typeOfB ){
-                    case "int":
-                        switch ( operator ){
-                            case '+':
-                                return String.valueOf(Integer.parseInt(b) + Integer.parseInt(a));
-                            case '-':
-                                return String.valueOf(Integer.parseInt(b) - Integer.parseInt(a));
-                            case '*':
-                                return String.valueOf(Integer.parseInt(b) * Integer.parseInt(a));
-                            case '/':
-                                return String.valueOf(Integer.parseInt(b) / Integer.parseInt(a));
-                            case '%':
-                                return String.valueOf(Integer.parseInt(b) % Integer.parseInt(a));
-                        }
-                        break;
-                    case "double":
-                        switch ( operator ){
-                            case '+':
-                                return String.valueOf(Double.parseDouble(b) + Integer.parseInt(a));
-                            case '-':
-                                return String.valueOf(Double.parseDouble(b) - Integer.parseInt(a));
-                            case '*':
-                                return String.valueOf(Double.parseDouble(b) * Integer.parseInt(a));
-                            case '/':
-                                return String.valueOf(Double.parseDouble(b) / Integer.parseInt(a));
-                            case '%':
-                                return String.valueOf(Double.parseDouble(b) % Integer.parseInt(a));
-                        }
-                }
-                break;
-            case "double":
-                switch ( typeOfB ){
-                    case "int":
-                        switch ( operator ) {
-                            case '+':
-                                return String.valueOf(Integer.parseInt(b) + Double.parseDouble(a));
-                            case '-':
-                                return String.valueOf(Integer.parseInt(b) - Double.parseDouble(a));
-                            case '*':
-                                return String.valueOf(Integer.parseInt(b) * Double.parseDouble(a));
-                            case '/':
-                                return String.valueOf(Integer.parseInt(b) / Double.parseDouble(a));
-                            case '%':
-                                return String.valueOf(Integer.parseInt(b) % Double.parseDouble(a));
-                        }
-                    case "double":
-                        switch ( operator ) {
-                            case '+':
-                                return String.valueOf(Double.parseDouble(b) + Double.parseDouble(a));
-                            case '-':
-                                return String.valueOf(Double.parseDouble(b) - Double.parseDouble(a));
-                            case '*':
-                                return String.valueOf(Double.parseDouble(b) * Double.parseDouble(a));
-                            case '/':
-                                return String.valueOf(Double.parseDouble(b) / Double.parseDouble(a));
-                            case '%':
-                                return String.valueOf(Double.parseDouble(b) % Double.parseDouble(a));
-                        }
-                }
+        
+        switch ( operator ) {
+            case '+':
+                return String.valueOf(Double.parseDouble(b) + Double.parseDouble(a));
+            case '-':
+                return String.valueOf(Double.parseDouble(b) - Double.parseDouble(a));
+            case '*':
+                return String.valueOf(Double.parseDouble(b) * Double.parseDouble(a));
+            case '/':
+                return String.valueOf(Double.parseDouble(b) / Double.parseDouble(a));
+            case '%':
+                return String.valueOf(Double.parseDouble(b) % Double.parseDouble(a));
         }
         return "";
     }
